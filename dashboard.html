@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>SIPU - Portal Aspirante</title>
+    <link rel="stylesheet" href="css/style_dashboard.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+
+<div class="layout">
+  <div class="sidebar">
+    <h1>🎓 SIPU</h1>
+    <hr>
+    
+    <div style="text-align: center; margin-bottom: 20px;">
+        <i class="fas fa-user-circle" style="font-size: 50px; color: #bdc3c7; margin-bottom: 10px;"></i>
+        <p id="lbl_nombre_lateral" style="font-weight: bold; color: white;">Cargando...</p>
+        <p style="font-size: 12px; color: #95a5a6;">Aspirante</p>
+    </div>
+    
+    <button onclick="show('inicio')" class="menu-btn active"><i class="fas fa-home"></i> Inicio</button>
+    <button onclick="show('ficha')" class="menu-btn"><i class="fas fa-id-card"></i> Mi Ficha</button>
+    
+    <button class="btn-logout" onclick="logout()"><i class="fas fa-sign-out-alt"></i> Salir</button>
+  </div>
+
+    <main class="main">
+
+        <div id="inicio" class="panel active">
+            <div class="topbar" style="margin-bottom: 30px;">
+                <h2>Panel Principal</h2>
+                <p>Resumen de tu proceso de admisión actual.</p>
+            </div>
+            
+            <div class="dashboard-stats">
+                
+                <div class="stat-card" id="card_rn">
+                    <div>
+                        <h3>Paso 1</h3>
+                        <p>Registro Nacional</p>
+                        <i class="fas fa-database stat-icon"></i>
+                    </div>
+                    <div id="status_rn" style="margin-top: 10px; font-size: 14px; color: #7f8c8d;">Verificando...</div>
+                </div>
+
+                <div class="stat-card" id="card_ins">
+                    <div>
+                        <h3>Paso 2</h3>
+                        <p>Inscripción</p>
+                        <i class="fas fa-file-signature stat-icon"></i>
+                    </div>
+                    
+                    <div id="container_btn_inscripcion" style="margin-top: 10px;">
+                        <small>Cargando estado...</small>
+                    </div>
+                </div>
+
+                <div class="stat-card" id="card_exa">
+                    <div>
+                        <h3>Paso 3</h3>
+                        <p>Evaluación</p>
+                        <i class="fas fa-laptop-code stat-icon"></i>
+                    </div>
+                    <div id="status_exa" style="margin-top: 10px; font-size: 14px; color: #7f8c8d;">Pendiente</div>
+                </div>
+
+                <div class="stat-card" id="card_res">
+                    <div>
+                        <h3>Paso 4</h3>
+                        <p>Asignación</p>
+                        <i class="fas fa-award stat-icon"></i>
+                    </div>
+                    <div id="status_res" style="margin-top: 10px; font-size: 14px; color: #7f8c8d;">En proceso</div>
+                </div>
+
+            </div>
+
+            <div class="card">
+                <h3><i class="fas fa-bullhorn"></i> Avisos Importantes</h3>
+                <p>Mantente atento a las fechas del cronograma. Si tienes dudas sobre tu "Nota de Bachillerato", verifica tus datos en la sección "Mi Ficha".</p>
+            </div>
+        </div>
+
+        <div id="ficha" class="panel">
+            <h2><i class="fas fa-user-circle"></i> Mi Ficha Personal</h2>
+            <div class="card">
+                <div class="ficha-grid">
+                    <div class="ficha-item">
+                        <label>Identificación (Cédula)</label>
+                        <div id="f_cedula">...</div>
+                    </div>
+                    <div class="ficha-item">
+                        <label>Nombre Completo</label>
+                        <div id="f_nombre">...</div>
+                    </div>
+                    <div class="ficha-item">
+                        <label>Correo Electrónico</label>
+                        <div id="f_correo">...</div>
+                    </div>
+                    <div class="ficha-item">
+                        <label>Teléfono / Celular</label>
+                        <div id="f_telefono">...</div>
+                    </div>
+                    <div class="ficha-item">
+                        <label>Nota de Bachillerato</label>
+                        <div id="f_nota" style="color: #2980b9; font-weight: bold;">Cargando...</div>
+                    </div>
+                    <div class="ficha-item">
+                        <label>Estado Civil</label>
+                        <div id="f_civil">Soltero/a</div>
+                    </div>
+                    <div class="ficha-item" style="grid-column: 1 / -1;">
+                        <label>Dirección Domiciliaria</label>
+                        <div id="f_direccion">Actualizar en secretaría si es incorrecta.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="panel_ofertas" class="panel">
+            <button onclick="show('inicio')" style="background:none; border:none; color:#3498db; cursor:pointer; margin-bottom:10px;">
+                <i class="fas fa-arrow-left"></i> Volver al panel
+            </button>
+            <h2>Seleccionar Carrera</h2>
+            <p>Elige una de las carreras disponibles para postular.</p>
+            <div id="gridOfertas" class="ofertas-grid" style="margin-top: 20px;"></div>
+        </div>
+
+    </main>
+</div>
+
+<script src="js/dashboard.js"></script>
+</body>
+</html>

@@ -1,0 +1,580 @@
+body{
+ background:#f0f2f5;
+ font-family:Arial;
+}
+
+/* CONTENEDOR PRINCIPAL */
+.wizard{
+ width:900px;
+ margin:30px auto;
+ background:white;
+ border-radius:12px;
+ box-shadow:0 5px 15px rgba(0,0,0,.1);
+}
+
+/* PASOS */
+.steps{
+ display:flex;
+ background:#f8f9fa;
+ padding:15px;
+}
+
+.steps span{
+ flex:1;
+ text-align:center;
+ font-weight:bold;
+ color:#bdc3c7;
+}
+
+.steps .active{
+ color:#3498db;
+ background:white;
+ padding:10px;
+ border-radius:8px;
+}
+
+/* CAJA CONTENIDO */
+.box{
+ background:#fff;
+ padding:30px;
+ border-radius:12px;
+}
+
+/* TITULOS */
+h3{
+ margin-bottom:10px;
+ color:#1e293b;
+}
+
+/* PANEL CONTADOR */
+.panel{
+ display:flex;
+ justify-content:space-between;
+ align-items:center;
+ margin-bottom:10px;
+}
+
+/* BADGE */
+.badge{
+ background:#22c55e;
+ color:white;
+ padding:4px 10px;
+ border-radius:20px;
+ font-size:12px;
+}
+
+/* BUSCADOR */
+.search-box{
+ margin-bottom:10px;
+}
+
+.search-box input{
+ width:100%;
+ padding:8px;
+ border-radius:8px;
+ border:1px solid #cbd5e1;
+}
+
+/* TARJETAS CARRERAS */
+.card{
+ background:white;
+ border-radius:16px;
+ padding:20px;
+ box-shadow:0 4px 12px rgba(0,0,0,.08);
+ display:flex;
+ justify-content:space-between;
+ align-items:center;
+ margin-bottom:10px;
+}
+
+/* TAG BLOQUE */
+.tag{
+ background:#0ea5e9;
+ color:white;
+ padding:4px 8px;
+ border-radius:20px;
+ font-size:12px;
+}
+
+/* BOTONES */
+.btn{
+ background:#2563eb;
+ color:white;
+ border:none;
+ padding:8px 14px;
+ border-radius:6px;
+ cursor:pointer;
+}
+
+.btn:hover{
+ background:#1e40af;
+}
+
+.btn-danger{
+ background:#dc2626;
+}
+
+.btn-danger:hover{
+ background:#991b1b;
+}
+
+/* LISTA SELECCIONADAS */
+ul li{
+ margin:8px 0;
+ list-style:none;
+}
+
+/* BOTONES GENERALES */
+button{
+ background:#2563eb;
+ border:none;
+ padding:8px 14px;
+ border-radius:8px;
+ color:white;
+ cursor:pointer;
+}
+
+button:hover{
+ background:#1d4ed8;
+}
+
+/* ITEM DRAG */
+.drag{
+ background:#f8fafc;
+ padding:10px;
+ border-radius:10px;
+ margin:6px 0;
+ display:flex;
+ justify-content:space-between;
+ align-items:center;
+ transition:.25s;
+}
+
+/* cuando arrastras */
+.drag:active{
+ opacity:.4;
+ transform:scale(.98);
+}
+
+/* hover */
+.drag:hover{
+ background:#e2e8f0;
+}
+
+/* zona destino */
+.drag-over{
+ border:2px dashed #2563eb;
+ background:#dbeafe;
+}
+
+.dragging{
+ opacity:.3;
+}
+
+/* Contenedor del acordeón */
+.bloque-moderno {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    margin-bottom: 12px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.summary-estilo {
+    padding: 16px;
+    background: #f8fafc;
+    cursor: pointer;
+    font-size: 1.1rem;
+    color: #1e293b;
+    list-style: none;
+    display: flex;
+    align-items: center;
+}
+
+.summary-estilo:hover { background: #f1f5f9; }
+
+/* Grid de carreras */
+.carreras-grid {
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* Tarjeta de carrera */
+.tarjeta-carrera-nueva {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px;
+    background: white;
+    border: 1px solid #edf2f7;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+}
+
+.info-principal { flex: 2; }
+.carrera-titulo { display: block; font-weight: bold; color: #2d3748; font-size: 1rem; }
+.facultad-badge { font-size: 0.75rem; color: #718096; background: #edf2f7; padding: 2px 8px; border-radius: 4px; }
+
+.tags-detalle {
+    flex: 3;
+    display: flex;
+    gap: 15px;
+    font-size: 0.85rem;
+    color: #4a5568;
+    justify-content: center;
+}
+
+.btn-agregar-estilo {
+    background: #3b82f6;
+    color: white;
+    border: none;
+    padding: 8px 20px;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.btn-agregar-estilo:hover { background: #2563eb; }
+
+/* Ajuste del badge de contador */
+.badge {
+    background: #10b981;
+    color: white;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-weight: bold;
+}
+
+.select-personalizado {
+    width: 100%;
+    padding: 8px;
+    border-radius: 6px;
+    border: 1px solid #cbd5e0;
+    background-color: #f7fafc;
+    font-size: 0.9rem;
+    margin-top: 4px;
+}
+
+.seleccion-usuario {
+    flex: 3;
+    padding: 0 20px;
+}
+
+.selector-opciones {
+    flex: 2;
+    padding: 0 15px;
+}
+
+.select-opcion {
+    width: 100%;
+    padding: 8px;
+    border-radius: 6px;
+    border: 1px solid #cbd5e0;
+    background: #f7fafc;
+    font-size: 0.9rem;
+    color: #2d3748;
+    cursor: pointer;
+}
+
+.select-opcion:focus {
+    outline: none;
+    border-color: #3182ce;
+    box-shadow: 0 0 0 1px #3182ce;
+}
+
+.seleccion-multiple {
+    display: flex;
+    gap: 8px;
+    flex: 2;
+    padding: 0 15px;
+}
+
+.select-mini {
+    flex: 1;
+    padding: 8px;
+    border-radius: 6px;
+    border: 1px solid #cbd5e0;
+    font-size: 0.85rem;
+    background: #fff;
+}
+
+.tarjeta-carrera-nueva {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 20px;
+    background: white;
+    border: 1px solid #edf2f7;
+    border-radius: 10px;
+}
+
+
+
+
+
+/* Contenedor de la lista */
+#listaSel {
+    list-style: none;
+    padding: 0;
+    margin-top: 20px;
+}
+
+/* Tarjeta de carrera seleccionada */
+.item-seleccionado-detallado {
+    background: #ffffff;
+    border: 1px solid #e0e6ed;
+    border-radius: 10px;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    padding: 12px 15px;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+}
+
+.item-seleccionado-detallado:hover {
+    border-color: #3b82f6;
+    transform: translateX(5px);
+}
+
+/* Número de orden circular */
+.orden-numero {
+    background: #3b82f6;
+    color: white;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 0.9em;
+    margin-right: 15px;
+}
+
+/* Información de la carrera */
+.detalles-carrera {
+    flex-grow: 1;
+}
+
+.nombre-carrera-sel {
+    font-weight: 700;
+    color: #1e293b;
+    font-size: 1.05em;
+    margin-right: 10px;
+}
+
+.bloque-tag {
+    font-size: 0.75em;
+    background: #f1f5f9;
+    color: #64748b;
+    padding: 2px 8px;
+    border-radius: 12px;
+    text-transform: uppercase;
+}
+
+/* Fila de detalles técnicos (Sede, Mod, Jor) */
+.fila-secundaria {
+    display: flex;
+    gap: 20px;
+    margin-top: 5px;
+    font-size: 0.85em;
+    color: #475569;
+}
+
+.fila-secundaria b {
+    color: #1e293b;
+}
+
+/* Botón de eliminar */
+.btn-eliminar {
+    background: #fee2e2;
+    color: #dc2626;
+    border: none;
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    font-size: 1.5em;
+    line-height: 1;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s;
+}
+
+.btn-eliminar:hover {
+    background: #f87171;
+    color: white;
+}
+
+
+
+
+/* Indicador visual de que se puede arrastrar */
+.cursor-move {
+    cursor: grab;
+}
+.cursor-move:active {
+    cursor: grabbing;
+}
+
+.drag-handle {
+    color: #cbd5e1;
+    margin-right: 10px;
+    font-size: 20px;
+    cursor: grab;
+    user-select: none;
+}
+
+/* Efecto cuando se está arrastrando */
+.sortable-ghost {
+    opacity: 0.4;
+    border: 2px dashed #3b82f6;
+    background: #eff6ff;
+}
+
+.search-box input {
+    width: 100%;
+    padding: 12px; /* Un poco más de espacio para tocar */
+    border-radius: 8px;
+    border: 1px solid #cbd5e1;
+    font-size: 16px; /* Evita zoom automático en móviles */
+    box-sizing: border-box; /* Importante para que no se salga del contenedor */
+}
+
+/* Estilos para la tabla de datos profesionales */
+.tabla-datos {
+    width: 100%;
+    border-top: 1px solid #e2e8f0;
+    margin-top: 20px;
+}
+
+.fila-dato {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 0;
+    border-bottom: 1px solid #e2e8f0; /* Línea divisoria como en la imagen */
+}
+
+.dato-etiqueta {
+    font-weight: bold;
+    color: #475569;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+}
+
+.dato-valor {
+    color: #1e293b;
+    font-size: 0.95rem;
+    text-align: right;
+}
+
+/* Botones inferiores del Paso 1 */
+.footer-paso1 {
+    display: flex;
+    justify-content: space-between; /* Uno a la izquierda, otro a la derecha */
+    margin-top: 30px;
+}
+
+.btn-salir {
+    background-color: #ef4444; /* Rojo de la imagen */
+    color: white;
+    border: none;
+    padding: 10px 25px;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.btn-salir:hover {
+    background-color: #dc2626;
+}
+
+.btn-siguiente-blue {
+    background-color: #3b82f6;
+    color: white;
+    border: none;
+    padding: 10px 35px;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* Contenedor de advertencia */
+.alerta-confirmacion {
+    background-color: #fffbeb;
+    border-left: 4px solid #f59e0b;
+    padding: 15px;
+    margin-bottom: 25px;
+    border-radius: 8px;
+}
+
+.alerta-confirmacion h4 {
+    color: #92400e;
+    margin: 0 0 5px 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.alerta-confirmacion p {
+    color: #b45309;
+    font-size: 0.9rem;
+    margin: 0;
+}
+
+/* Tarjetas de resumen final */
+.resumen-grid {
+    display: grid;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.tarjeta-resumen {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.prioridad-circulo {
+    background: #3b82f6;
+    color: white;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    flex-shrink: 0;
+}
+
+.info-resumen h5 {
+    margin: 0;
+    color: #1e293b;
+    font-size: 1rem;
+}
+
+.info-resumen p {
+    margin: 2px 0 0 0;
+    font-size: 0.85rem;
+    color: #64748b;
+}
+
+.tag-final {
+    font-size: 0.7rem;
+    background: #dbeafe;
+    color: #1e40af;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-weight: bold;
+}

@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SIPU - Panel Admin</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+<div class="layout">
+  <div class="sidebar">
+    <h1>SIPU</h1>
+    <hr>
+    <p>ADMINISTRACIÓN</p>
+    <button onclick="show('inicio')" class="menu-btn active"><i class="fas fa-home"></i> Inicio</button>
+    <button onclick="show('periodo')" class="menu-btn"><i class="fas fa-calendar-alt"></i> Períodos</button>
+    <button onclick="show('oferta')" class="menu-btn"><i class="fas fa-graduation-cap"></i> Oferta Académica</button>
+    <button onclick="show('postulaciones')" class="menu-btn"><i class="fas fa-users"></i> Aspirantes</button>
+    <button onclick="show('config')" class="menu-btn"><i class="fas fa-cogs"></i> Configuración</button>
+<button onclick="show('infra')" class="menu-btn"><i class="fas fa-building"></i> Infraestructura</button>
+    <button onclick="show('asignacion')" class="menu-btn"><i class="fas fa-cogs"></i> Asignación Examen</button>
+    <button onclick="show('reportes')" class="menu-btn"><i class="fas fa-chart-pie"></i> Reportes</button>
+    <button class="btn-logout" onclick="logout()"><i class="fas fa-sign-out-alt"></i> Cerrar sesión</button>
+  </div>
+
+  <div class="main">
+
+    <div id="inicio" class="panel active">
+        <h2>Resumen General</h2>
+        <div class="dashboard-stats">
+            <div class="stat-card blue">
+                <h3>Período Activo</h3>
+                <p id="lbl_periodo">Cargando...</p>
+                <i class="fas fa-calendar-check icon-bg"></i>
+            </div>
+            <div class="stat-card green">
+                <h3>Total Aspirantes</h3>
+                <p id="lbl_total">0</p>
+                <i class="fas fa-user-friends icon-bg"></i>
+            </div>
+        </div>
+        <h2 style="margin-top: 30px;">Accesos Rápidos</h2>
+        <div class="card">
+            <p>Bienvenido al Panel de Administración.</p>
+        </div>
+    </div>
+
+    <div id="periodo" class="panel">
+        <h2>Gestión de Períodos</h2>
+        
+        <div class="card" style="margin-bottom: 20px;">
+            <h3 style="margin-top:0;">Nuevo Período</h3>
+            <label>Nombre del Periodo:</label>
+            <input id="p_nombre" placeholder="Ej: 2026-1">
+            <div class="form-grid-layout" style="margin-top:10px;">
+                <div><label>Fecha Inicio:</label><input id="p_inicio" type="date"></div>
+                <div><label>Fecha Fin:</label><input id="p_fin" type="date"></div>
+            </div>
+            <button class="btn-main" onclick="crearPeriodo()">Crear Nuevo Período</button>
+        </div>
+
+        <div class="card">
+            <h3 style="margin-top:0;">Historial de Períodos</h3>
+            <div id="lista_periodos">
+                <p>Cargando...</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="oferta" class="panel">
+        <h2>Nueva Oferta Académica</h2> 
+        <div class="card"> 
+            <div class="form-grid-layout">
+                <div><label>ID Oferta (Auto)</label><input id="o_id" type="text" placeholder="Autogenerado" disabled style="background:#f0f0f0; color:#888;"></div>
+                <div><label>Nombre Carrera</label><input id="o_carrera" placeholder="Ej: Software"></div>
+                <div><label>Periodo</label><select id="o_periodo"><option>Cargando...</option></select></div>
+                <div><label>Sede</label><select id="o_sede"><option>Cargando...</option></select></div>
+                <div><label>Cupos</label><input id="o_cupos" type="number" placeholder="Ej: 50"></div>
+                <div><label>Modalidad</label>
+                    <select id="o_modalidad"><option value="Presencial">Presencial</option><option value="En Línea">En Línea</option></select>
+                </div>
+                <div><label>Bloque</label><input id="o_bloque" placeholder="Ej: TICs"></div>
+                <div><label>Jornada</label>
+                    <select id="o_jornada"><option value="1">Matutina</option><option value="2">Vespertina</option></select>
+                </div>
+                <div><label>Fecha</label><input id="o_fecha" type="date"></div>
+                <div><label>Estado</label>
+                    <select id="o_estado"><option value="ACTIVA">ACTIVA</option><option value="INACTIVA">INACTIVA</option></select>
+                </div>
+            </div>
+            <button class="btn-main" onclick="crearOferta()">Guardar Oferta</button>
+        </div>
+    </div>
+
+    <div id="postulaciones" class="panel">
+        <h2>Gestión de Aspirantes</h2>
+        <div class="card">
+            <div class="search-bar">
+                <input id="txt_buscar" placeholder="Buscar por Cédula..." onkeyup="if(event.key === 'Enter') buscarAspirante()">
+                <button class="btn-main" style="width:150px; margin:0;" onclick="buscarAspirante()">Buscar</button>
+            </div>
+        </div>
+        <div id="resultados_busqueda" style="margin-top: 20px;"></div>
+    </div>
+<div id="config" class="panel">
+        <h2>Configuración del Sistema</h2>
+        
+        <div class="card">
+            <h3><span id="txt_accion_conf">Nueva</span> Configuración</h3>
+            <input type="hidden" id="conf_id"> <div class="form-grid-layout">
+                <div>
+                    <label>Periodo:</label>
+                    <select id="conf_periodo" class="input-form"><option>Cargando...</option></select>
+                </div>
+                <div>
+                    <label>Tipo Configuración:</label>
+                    <select id="conf_tipo" class="input-form">
+                        <option value="FECHA_INICIO_INSCRIPCION">Inicio Inscripción</option>
+                        <option value="FECHA_FIN_INSCRIPCION">Fin Inscripción</option>
+                        <option value="FECHA_INICIO_POSTULACION">Inicio Postulación</option>
+                        <option value="FECHA_FIN_POSTULACION">Fin Postulación</option>
+                        <option value="FECHA_EXAMEN">Fecha Examen</option>
+                        <option value="NOTA_MINIMA">Nota Mínima</option>
+                    </select>
+                </div>
+                <div>
+                    <label>Valor (Fecha/Texto):</label>
+                    <input type="text" id="conf_valor" class="input-form" placeholder="AAAA-MM-DD o Valor">
+                </div>
+            </div>
+            
+            <div style="margin-top:15px; display:flex; gap:10px;">
+                <button class="btn-main" onclick="guardarConfig()">💾 Guardar</button>
+                <button class="btn-main" onclick="limpiarConfig()" style="background:#95a5a6; display:none;" id="btn_cancelar_conf">Cancelar</button>
+            </div>
+        </div>
+
+        <div class="card" style="margin-top:20px;">
+            <h3>Historial de Configuraciones</h3>
+            <div id="lista_configs">Cargando...</div>
+        </div>
+    </div>
+
+    <div id="infra" class="panel">
+        <h2>Gestión de Infraestructura</h2>
+
+    <div class="card" style="margin-bottom:20px;">
+        <h3>🏢 Nueva Sede</h3>
+        <div class="form-grid-layout">
+            <div><label>Nombre Sede</label><input id="sede_nombre" placeholder="Ej: Matriz"></div>
+        
+            <div><label>Universidad (IES)</label><select id="sede_ies"><option>Cargando...</option></select></div>
+        
+            <div><label>Dirección</label><input id="sede_dir" placeholder="Calle..."></div>
+            <div><label>Capacidad Total</label><input id="sede_cap" type="number" placeholder="0"></div>
+        </div>
+        <button class="btn-main" onclick="crearSede()">Guardar Sede</button>
+    </div>
+
+        <div class="card" style="margin-bottom:20px; border-left: 5px solid #9b59b6;">
+            <h3>🖥️ Gestión de Laboratorios</h3>
+            <input type="hidden" id="lab_id"> <div class="form-grid-layout">
+                <input id="lab_nombre" placeholder="Nombre (Ej: Lab 1)" class="input-form">
+                <select id="lab_sede" class="input-form"><option>Seleccione Sede...</option></select>
+                <input id="lab_piso" type="number" placeholder="Piso" class="input-form">
+                <input id="lab_cap" type="number" placeholder="Capacidad" class="input-form">
+            </div>
+
+            <div style="margin-top:10px; display:flex; gap:10px;">
+                <button class="btn-main" onclick="guardarLaboratorio()">Guardar Lab</button>
+                <button class="btn-main" onclick="limpiarLab()" id="btn_cancelar_lab" style="background:#95a5a6; display:none;">Cancelar</button>
+            </div>
+
+            <div style="margin-top:15px; max-height: 200px; overflow-y:auto;" id="tabla_labs"></div>
+        </div>
+
+        <div class="card" style="border-left: 5px solid #f1c40f;">
+            <h3>👨‍🏫 Gestión de Monitores</h3>
+            <input type="hidden" id="mon_id"> <div class="form-grid-layout">
+                <input id="mon_nombre" placeholder="Nombre Completo" class="input-form">
+                <input id="mon_cedula" placeholder="Cédula" class="input-form">
+                <input id="mon_tel" placeholder="Teléfono" class="input-form">
+                <select id="mon_lab" class="input-form"><option>Asignar Laboratorio...</option></select>
+                <select id="mon_estado" class="input-form">
+                    <option value="ACTIVO">Activo</option>
+                    <option value="INACTIVO">Inactivo</option>
+                </select>
+            </div>
+
+            <div style="margin-top:10px; display:flex; gap:10px;">
+                <button class="btn-main" onclick="guardarMonitor()">Guardar Monitor</button>
+                <button class="btn-main" onclick="limpiarMonitor()" id="btn_cancelar_mon" style="background:#95a5a6; display:none;">Cancelar</button>
+            </div>
+
+            <div style="margin-top:15px; max-height: 200px; overflow-y:auto;" id="tabla_monitores"></div>
+        </div>
+    </div> 
+<div id="asignacion" class="panel">
+        <h2>Motor de Asignación de Examen</h2>
+        
+        <div class="card">
+            <p>Este proceso ejecutará el algoritmo de selección basado en méritos.</p>
+            <!-- CONFIGURACIÓN FECHA EXÁMENES -->
+            <h3>Configuración de Exámenes</h3>
+
+            <label>Fecha inicio de exámenes:</label>
+            <input type="date" id="fechaInicioExamen">
+
+            <button class="btn-main" 
+            style="margin-top:10px; width:220px;"
+            onclick="guardarFechaExamen()">
+            Guardar fecha
+            </button>
+
+            <hr style="margin:20px 0;">
+
+            <div style="background:#e8f8f5; border-left:4px solid #2ecc71; padding:15px; margin:20px 0;">
+                <strong>⚠️ Importante:</strong>
+                <ul style="margin:5px 0 0 20px; font-size:13px; color:#555;">
+                    <li>Se procesarán todas las carreras del periodo seleccionado.</li>
+                    <li>Los aspirantes serán ordenados para cada laboratorio.</li>
+                </ul>
+            </div>
+
+            <label>Seleccione el Periodo:</label>
+            <div style="display:flex; gap:10px; margin-top:5px; align-items: flex-end;">
+                <select id="a_periodo" style="margin:0;" onchange="validarPeriodo()"><option>Cargando...</option></select>
+
+                <button class="btn-main" id="btnAsignar" style="margin:0; width:180px;" onclick="ejecutarAsignacion()">
+                    <i class="fas fa-play"></i> Ejecutar
+                </button>
+                
+                <button class="btn-main" style="margin:0; width:180px; background:#27ae60;" onclick="descargarReporte()">
+                    <i class="fas fa-file-csv"></i> Descargar Lista
+                </button>
+            </div>
+
+            <div id="reporte_asignacion" style="margin-top:30px;"></div>
+        </div>
+    </div>
+    <div id="reportes" class="panel">
+        <h2>Reportes y Estadísticas</h2>
+        <div class="form-grid-layout">
+            <div class="card"><h3 style="text-align:center;">Demanda</h3><canvas id="chartCarreras"></canvas></div>
+            <div class="card"><h3 style="text-align:center;">Estados</h3><div style="width:80%; margin:0 auto;"><canvas id="chartEstados"></canvas></div></div>
+        </div>
+        <button class="btn-main" onclick="cargarReportes()" style="width:200px; margin:20px auto; display:block;">Actualizar</button>
+    </div>
+
+  </div>
+</div>
+<script src="js/admin.js"></script>
+</body>
+</html>

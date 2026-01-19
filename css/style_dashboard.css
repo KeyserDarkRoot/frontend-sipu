@@ -1,0 +1,129 @@
+/* =========================================
+   ESTILOS GENERALES
+   ========================================= */
+* { box-sizing: border-box; }
+body {
+    background: #f0f2f5;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0; padding: 0; height: 100vh;
+}
+
+/* =========================================
+   LAYOUT & SIDEBAR
+   ========================================= */
+.layout { display: flex; height: 100vh; width: 100%; overflow: hidden; }
+
+.sidebar {
+    width: 280px;
+    background: #2c3e50; /* Azul Oscuro */
+    color: white;
+    display: flex;
+    flex-direction: column;
+    padding: 30px 20px;
+    flex-shrink: 0;
+}
+
+.sidebar h1 {
+    color: white;
+    font-size: 28px;
+    text-align: center;
+    margin: 0 0 10px 0;
+    letter-spacing: 1px;
+}
+.sidebar hr { border: 0; border-top: 1px solid rgba(255,255,255,0.1); margin-bottom: 20px; width: 100%; }
+
+/* BOTONES MENÚ */
+.menu-btn {
+    width: 100%; padding: 12px 20px;
+    background: transparent; border: none;
+    color: #bdc3c7; font-size: 16px;
+    display: flex; align-items: center; gap: 15px;
+    cursor: pointer; border-radius: 6px;
+    transition: all 0.2s ease;
+    margin-bottom: 5px;
+    text-align: left;
+}
+.menu-btn:hover { background: rgba(255,255,255,0.05); color: white; }
+.menu-btn.active { background: #34495e; color: white; font-weight: bold; border-left: 4px solid #3498db; }
+
+.btn-logout { margin-top: auto; color: #e74c3c !important; }
+.btn-logout:hover { background: rgba(231, 76, 60, 0.1); }
+
+/* =========================================
+   MAIN CONTENT
+   ========================================= */
+.main { flex: 1; background: #f4f7f6; padding: 40px; overflow-y: auto; }
+
+.panel { display: none; }
+.panel.active { display: block; animation: fadeIn 0.4s; }
+@keyframes fadeIn { from{opacity:0; transform:translateY(10px);} to{opacity:1; transform:translateY(0);} }
+
+/* TARJETAS (DASHBOARD STATS) CON ZOOM */
+.dashboard-stats { 
+    display: grid; 
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); 
+    gap: 25px; 
+    margin-bottom: 30px;
+}
+
+.stat-card {
+    background: white; padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    border-left: 5px solid #bdc3c7;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* EFECTO ZOOM AL PASAR MOUSE */
+.stat-card:hover { transform: scale(1.05); box-shadow: 0 10px 20px rgba(0,0,0,0.15); z-index: 10; }
+
+/* ESTADOS DE TARJETA */
+.stat-card.active-step { border-left-color: #3498db; background: #fff; }
+.stat-card.done-step { border-left-color: #2ecc71; }
+
+.stat-card h3 { font-size: 13px; text-transform: uppercase; color: #7f8c8d; margin: 0 0 5px 0; }
+.stat-card p { font-size: 20px; font-weight: bold; color: #2c3e50; margin: 0; }
+.stat-icon { position: absolute; right: 20px; top: 20px; font-size: 30px; color: #ecf0f1; }
+
+/* Tarjeta Avisos */
+.card { background: white; padding: 25px; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); margin-bottom: 20px; }
+.card h3 { color: #34495e; margin-top: 0; }
+
+/* =========================================
+   FICHA PERSONAL (Grid System)
+   ========================================= */
+.ficha-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.ficha-item label { display: block; color: #7f8c8d; font-size: 13px; font-weight: bold; margin-bottom: 5px; }
+
+/* Estilo para los DIVs que parecen inputs (ya que tu HTML usa DIVs) */
+.ficha-item div {
+    background: #f8f9fa;
+    padding: 12px;
+    border-radius: 6px;
+    border: 1px solid #e9ecef;
+    color: #2c3e50;
+    font-weight: 500;
+    font-size: 14px;
+}
+
+/* =========================================
+   BOTONES ACCIÓN
+   ========================================= */
+.btn-action {
+    width: 100%; padding: 8px; border: none; border-radius: 6px;
+    color: white; font-weight: bold; cursor: pointer; margin-top: 5px;
+    display: flex; align-items: center; justify-content: center; gap: 8px;
+}
+.btn-blue { background: #3498db; }
+.btn-blue:hover { background: #2980b9; }
+.btn-green { background: #27ae60; }
+.btn-green:hover { background: #219150; }
+
+/* OFERTAS */
+.ofertas-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; }
+.oferta-item { border: 1px solid #eee; padding: 20px; border-radius: 8px; transition: 0.3s; background: white; }
+.oferta-item:hover { border-color: #3498db; transform: translateY(-3px); box-shadow: 0 5px 15px rgba(0,0,0,0.1); }

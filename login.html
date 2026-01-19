@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>SIPU - Login</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="login-card">
+
+  <h1>SIPU</h1>
+  <p class="subtitle">Iniciar Sesión</p>
+
+  <label>Identificación:</label>
+  <input id="cedula">
+
+  <label>Contraseña:</label>
+  <input id="pass" type="password">
+
+  <button class="btn-main" onclick="login()">Iniciar Sesión</button>
+
+  <button class="link" onclick="irRecuperar()">¿Olvidó su contraseña?</button>
+  <button class="link green" onclick="irValidacion()">Validar aspiración</button>
+
+
+</div>
+
+<script src="js/auth.js"></script>
+</body>
+</html>
