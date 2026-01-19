@@ -1,7 +1,7 @@
 const user = JSON.parse(localStorage.getItem("user"));
 
 if (!user) {
-    window.location = "login.html";
+    window.location = "index.html";
 }
 
 window.onload = async () => {
@@ -135,4 +135,4 @@ async function cargarEstadoGeneral() {
 
 function irAInscripcion() { window.location.href = "inscripcion.html"; }
 function descargarComprobante() { window.open(`https://sipu-backend.onrender.com/certificados/inscripcion/${user.cedula}`); }
-function logout() { localStorage.clear(); window.location = "login.html"; }
+function logout() { localStorage.clear(); window.location = "index.html"; }

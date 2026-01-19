@@ -1,7 +1,7 @@
 const user = JSON.parse(localStorage.getItem("user"))
 
 if(!user){
- window.location="login.html"
+ window.location="index.html"
 }
 
 let periodo = null

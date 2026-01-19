@@ -2,7 +2,7 @@ const user = JSON.parse(localStorage.getItem("user"))
 
 if(!user || user.rol !== "Admin"){
  alert("Acceso restringido")
- window.location="login.html"
+ window.location="index.html"
 }
 
 let chartCarreras = null;
@@ -250,7 +250,7 @@ async function cargarReportes() {
     chartEstados = new Chart(ctx2, { type: 'doughnut', data: { labels: data.estados.labels, datasets: [{ data: data.estados.values, backgroundColor: ['#2ecc71', '#e74c3c', '#95a5a6', '#f1c40f'] }] } });
 }
 
-function logout(){ localStorage.clear(); window.location="login.html"; }
+function logout(){ localStorage.clear(); window.location="index.html"; }
 
 
 

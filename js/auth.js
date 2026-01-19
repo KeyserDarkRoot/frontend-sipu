@@ -61,14 +61,14 @@ const r = await res.json()
 
 if(r.ok){
  alert("Cuenta creada con éxito")
- window.location="login.html"
+ window.location="index.html"
 }else{
  alert(r.msg)
 }
 }
 
 function volver(){
- window.location="login.html"
+ window.location="index.html"
 }
 
 
@@ -103,7 +103,7 @@ async function recuperar(){
 
  if(r.ok){
   alert("La contraseña fue enviada a su correo")
-  window.location.href="login.html"
+  window.location.href="index.html"
  }else{
   alert(r.msg)
  }
@@ -131,7 +131,7 @@ async function validar(){
 
  if(r.ok){
   alert("Credenciales enviadas al correo")
-  window.location="login.html"
+  window.location="index.html"
  }else{
   alert(r.msg)
  }

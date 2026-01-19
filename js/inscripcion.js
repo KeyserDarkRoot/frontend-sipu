@@ -10,7 +10,7 @@ let camposSeleccionados = new Set(); // Rastrea los nombres de los bloques (Camp
 const user = JSON.parse(localStorage.getItem("user"))
 
 if(!user){
- window.location="login.html"
+ window.location="index.html"
 }
 
 // ===================== UI =====================
